@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<%= @quest.name %></br>
+<%= @quest.description %></br>
+<%= @quest.difficulty %></br>
+<%= @quest.deadline %></br>
+<%= @quest.state %></br>
+<%= link_to 'Edit', edit_quest_path(@quest) %> |
+<%= link_to 'Back', quests_path %>

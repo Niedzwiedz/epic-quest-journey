@@ -1,0 +1,30 @@
+<%= form_for(@quest) do |f| %>
+  <% if @quest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quest.errors.count, "error") %> prohibited this quest from being saved:</h2>
+
+      <ul>
+      <% @quest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% my_date = Time.now + 6.days %>
+
+  <div class="actions">
+      <%= f.text_field :name %></br>  
+      <%= f.text_area :description %></br>
+      <%= f.radio_button :difficulty , 'legendary' %>
+      <%= f.label :difficulty, 'Legendary', :value => 'legendary' %></br>
+      <%= f.radio_button :difficulty , 'epic' %>
+      <%= f.label :difficulty, 'Epic', :value => 'epic' %></br>
+      <%= f.radio_button :difficulty , 'hard' %>
+      <%= f.label :difficulty, 'Hard', :value => 'hard' %></br>
+      <%= f.radio_button :difficulty , 'normal', :checked => true%>
+      <%= f.label :difficulty, 'Normal', :value => 'normal' %></br>
+      <%= f.radio_button :difficulty , 'easy' %>
+      <%= f.label :difficulty, 'Easy', :value => 'easy' %></br>
+      <%= f.date_select :deadline %>
+    <%= f.submit %>
+<% end %>
