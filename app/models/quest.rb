@@ -5,5 +5,13 @@ class Quest < ActiveRecord::Base
 	def self.current
 		Quest.where("state LIKE ? AND deadline > ?", "current", Date.today)
 	end
-	
+	def self.unfinished
+		Quest.where("state LIKE ? AND deadline <= ?", "unfinished", Date.today)
+	end
+	def self.finished
+		Quest.where("state LIKE ? AND deadline <= ?", "finished", Date.today)
+	end
+	def self.failed
+		Quest.where("state LIKE ? AND deadline <= ?", "current", Date.today)
+	end
 end

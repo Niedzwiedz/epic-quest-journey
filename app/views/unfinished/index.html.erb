@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Unfinished</h1>
+
+<table id="unfinished-table">
+	<thead>
+		<tr>
+			<th colspan="1">Name</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @unfinished_qs.each do |unfinished| %>
+			<tr>
+				<td><%= unfinished.name %></td>
+				<td><%= link_to 'Show', unfinished %></td>
+				<td><%= link_to 'Destroy', unfinished, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

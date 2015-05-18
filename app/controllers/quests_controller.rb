@@ -1,6 +1,5 @@
 class QuestsController < ApplicationController
-	before_action :
-	before_action :all_quests, only: [:index, :create]
+	before_action :current_quests, only: [:index, :create]
 	respond_to :html, :js
   before_action :set_quest, only: [:show, :edit, :update, :destroy]
   # GET /quests
@@ -59,10 +58,6 @@ class QuestsController < ApplicationController
       format.html { redirect_to quests_url, notice: 'Quest was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def set_unfinished
-	@unfinished_quests= Quest.unfinished
   end
 
   private
