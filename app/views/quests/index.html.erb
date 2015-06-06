@@ -1,29 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Quests</h1>
+<h1>Active Quests</h1>
 
-<table id="quest-table">
-  <thead>
-    <tr>
-      <th colspan="1">Name</th>
-    </tr>
-  </thead>
+<div class="row">
+	<div class="col-xs-6">
+		<div class="table">
+			<table class="table table-hover" >
+				<thead>
+					<tr>
+						<th colspan="1">Title</th>
+						<th colspan="1">Difficulty</th>
+						<th colspan="1">Deadline</th>
+						<th colspan="4">Actons</th>
+						<th colspan="1" style="text-align:right">
+						<%=link_to new_quest_path do%>
+							<span class="glyphicon glyphicon-plus"></span>
+						<%end%>
+						</th>
+					</tr>
+				</thead>
 
-  <tbody>
-    <% @quests.each do |quest| %>
-     <tr>
-        <td><%= quest.name %> </td>
-        <td><%= link_to 'Show', quest %></td>
-        <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-        <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+				<tbody class="align-right">
+					<% @quests.each do |quest| %>
+						<tr >
+							<td><%= quest.name %> </td>
+							<td><%= quest.difficulty %> </td>
+							<td><%= quest.deadline %> </td>
+							<td><div><%= link_to  finish_quest_path(quest), :method => :put, class: "btn btn-default" do%>
+									<span class="glyphicon glyphicon-ok"></span>
+								<% end %>	
+								<%= link_to quest, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-folder-open"></span>
+								<%end%>
+
+								<%= link_to edit_quest_path(quest), class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-cog"></span>
+								<% end %>
+								<%= link_to quest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-trash"></span>
+								<%end%>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-xs-2"></div>
+	<div class="col-xs-4" style="border-left:solid 1px black">
+		<%= render "users/show" %>
+	</div>
+</div>
 
 <br>
 
-<%= link_to 'New Quest', new_quest_path %>
-<%= link_to 'New Quest', new_quest_path, remote: true %>
-<div id="quest-form" style="display:none;"></div>
 

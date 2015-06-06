@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="row"> 
+	<div class="col-md-3" style="border-bottom: solid 1px black">
+		<h1>Guild Menu</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h4>
+			<strong>
+				<%= @guild.name %>
+			</strong>
+		</h4></br>
+
+		<p>
+		<strong>Leader:</strong>
+		<%= @leader.nickname %>
+		</p>
+
+		<p>
+		<strong>Motto:</strong>
+		<%= @guild.motto %>
+		</p>
+		</br>
+	</div>
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-4">
+		<%= render "guild_members" %>
+	</div>
+</div>
+<%= link_to 'Edit', edit_guild_path(@guild) %> |
+<%= link_to 'Back', quests_path %>

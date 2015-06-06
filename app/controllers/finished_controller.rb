@@ -1,4 +1,5 @@
 class FinishedController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_finished, only: [:show, :destroy]
 
 	def index

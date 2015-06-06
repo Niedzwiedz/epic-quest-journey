@@ -2,21 +2,39 @@
 
 <h1>Unfinished</h1>
 
-<table id="unfinished-table">
-	<thead>
-		<tr>
-			<th colspan="1">Name</th>
-		</tr>
-	</thead>
+<div class="row">
+	<div class="col-xs-6">
+		<div class="table">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th colspan="1">Title</th>
+						<th colspan="1">Difficulty</th>
+						<th colspan="1">Actions</th>
+					</tr>
+				</thead>
 
-	<tbody>
-		<% @unfinished_qs.each do |unfinished| %>
-			<tr>
-				<td><%= unfinished.name %></td>
-				<td><%= link_to 'Show', unfinished %></td>
-				<td><%= link_to 'Destroy', unfinished, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+				<tbody>
+					<% @unfinished_qs.each do |unfinished| %>
+						<tr>
+							<td><%= unfinished.name %></td>
+							<td><%= unfinished.difficulty %></td>
+							<td><div><%= link_to unfinished, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-file"></span>
+								<% end %>
 
+								<%= link_to unfinished, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-trash"></span>
+								<% end %>
+								</div></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+	<div class="col-md-4" style="border-left:solid 1px black">
+		<%= render "users/show" %>
+	</div>
+</div>

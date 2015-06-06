@@ -1,4 +1,5 @@
 class UnfinishedController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_unfinished, only: [:show, :destroy]
 
 	def index
