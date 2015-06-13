@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  has_many :quests
-  belongs_to :guild
-
+	# Include default devise modules. Others available are:
+	# :confirmable, :lockable, :timeoutable and :omniauthable
+	devise :database_authenticatable, :registerable,
+		:recoverable, :rememberable, :trackable, :validatable
+	has_many :quests
+	has_many :members
+	has_many :guilds, through: :members
 end

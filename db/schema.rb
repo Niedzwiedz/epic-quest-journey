@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603150349) do
+ActiveRecord::Schema.define(version: 20150606154658) do
 
   create_table "guilds", force: :cascade do |t|
     t.string   "name",       default: "", null: false
-    t.integer  "leader_id",               null: false
     t.text     "motto"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer  "guild_id"
+    t.integer  "user_id"
+    t.boolean  "leader"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quests", force: :cascade do |t|
@@ -48,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150603150349) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "guild_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

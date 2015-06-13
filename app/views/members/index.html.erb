@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Members</h1>
+
+<%= current_user.id %>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+	      <td><%= @guild.name%></td>
+	      <td><%= member.nickname %></td>
+	      <td><%= member.id %></td>
+		<td><%= member.members.first.id %></td>
+
+	<td><% if  current_user.members.first.leader == true || member.id==current_user.id %>
+		<%= link_to 'Destroy', member.members.first, method: :delete, data: { confirm: 'Are you sure?' }%>
+		<% end %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.members.first.leader == true %>
+<%= link_to 'New Member', new_member_path %>
+<% end %>

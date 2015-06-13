@@ -1,8 +1,7 @@
-<h2><%= current_user.nickname %></h2>
+<h2><%= current_user.nickname %>#<%= current_user.id %></h2>
 <div class="progress">
 	<div class="progress-bar" role="progressbar" aria-valuenow=<%=current_user.experience%> aria-valuemin="0" aria-valuemax="1000" style="width: 20%;">
   </div>
 </div>
 <h4>Lvl: <%= current_user.level %></h4>
 <p>Exp: <%= current_user.experience %></p>
-<p>Guild: <%= current_user.guild.name %></p>

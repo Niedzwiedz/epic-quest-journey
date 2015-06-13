@@ -48,8 +48,8 @@
 							<li style="text-align:center">
 								<div><span class="glyphicon glyphicon-user" style="font-size: 2em"></span><h4><%=link_to current_user.nickname, current_user %></h4></div>
 							</li>
-							<li style="text-align:center">
-								<%= link_to current_user.guild.name, guild_path(current_user.guild_id) %>
+							<li>
+								<%= link_to "Guild", guild_path(current_user.guilds.first.id) %>
 							</li>
 							<li class="divider"></li>
 							<li>

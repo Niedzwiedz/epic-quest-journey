@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	resources :members, :except => [:show, :edit]
+
 	resources :guilds, :except => [:index]
 
 	devise_for :users
